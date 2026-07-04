@@ -1,6 +1,7 @@
-# QA ChatBot
 
-A Streamlit-based chatbot that can answer questions based on PDF documents using Google Generative AI embeddings and Groq LLM.
+# FIFA World Cup ChatBot
+
+A Streamlit-based RAG chatbot that answers questions about the FIFA World Cup using Google Generative AI embeddings and a Groq LLM.
 
 ## Project Structure
 
@@ -9,7 +10,7 @@ QaChatBot/
 ├── app.py              # Main Streamlit application
 ├── requirements.txt    # Python dependencies
 ├── data/              # Data directory for PDF files
-│   └── sampledata.pdf # Sample PDF file for testing
+│   └── sampledata.pdf # FIFA World Cup 26 fact sheet (sample source)
 ├── .env               # Environment variables (create this file)
 ├── .gitignore         # Git ignore rules
 └── README.md          # This file
@@ -61,7 +62,7 @@ QaChatBot/
 
 1. Click "Create Vector Store" to initialize the embeddings and load the PDF
 2. Enter your question in the text input
-3. Get answers based on the content of the PDF file
+3. Get answers based on the content of the FIFA World Cup fact sheet
 4. View document similarity search results in the expandable section
 
 ## Deployment

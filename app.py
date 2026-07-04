@@ -19,7 +19,7 @@ groq_api_key = st.secrets.get("GROQ_API_KEY")
 google_api_key = st.secrets.get("GOOGLE_API_KEY")
 
 
-st.title("QA ChatBot")
+st.title("FIFA World Cup ChatBot")
 
 llm = ChatGroq(model="gemma2-9b-it", api_key=groq_api_key)
 
