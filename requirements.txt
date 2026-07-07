@@ -1,12 +1,29 @@
+# Core app
+streamlit>=1.31,<2.0
+python-dotenv>=1.0
 
-faiss-cpu
-groq
-langchain-groq
-PyPDF2
-langchain_google_genai
-langchain
-streamlit
-langchain_community
-python-dotenv
-pypdf
-nest_asyncio
+# LLM (Groq) + local embeddings
+langchain>=0.3,<0.4
+langchain-community>=0.3,<0.4
+langchain-groq>=0.2
+
+# Local embedding model (no API key / quota) — pulls in torch + transformers.
+# Force the CPU-only torch wheel so the deployed image stays small (the default
+# Linux torch bundles CUDA and is ~2GB, which can exceed cloud limits).
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+sentence-transformers>=3.0
+
+# Vector store
+faiss-cpu>=1.8
+
+# Document loading / PDF
+pypdf>=4.0
+
+# Web crawling
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.1
+
+# Async helper for Streamlit + gRPC event loops
+nest_asyncio>=1.6

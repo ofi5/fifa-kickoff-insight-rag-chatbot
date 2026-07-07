@@ -1,7 +1,7 @@
 
 # FIFA World Cup ChatBot
 
-A Streamlit-based RAG chatbot that answers questions about the FIFA World Cup using Google Generative AI embeddings and a Groq LLM.
+A Streamlit-based RAG chatbot that answers questions about the FIFA World Cup. It builds a knowledge base from local PDFs **and** a fixed set of crawled FIFA/World Cup web pages, embeds them locally with a HuggingFace sentence-transformer (no embedding API needed), stores them in FAISS, and answers with a Groq LLM.
 
 ## Project Structure
 
@@ -26,10 +26,10 @@ QaChatBot/
 2. **Set up API Keys:**
    
    **For Local Development:**
-   Create a `.env` file in the root directory with your API keys:
+   Only a Groq key is required (embeddings run locally). Create a
+   `.streamlit/secrets.toml` (or `.env`) with:
    ```
    GROQ_API_KEY=your_groq_api_key_here
-   GOOGLE_API_KEY=your_google_api_key_here
    ```
    
    **For Website Deployment (Streamlit Cloud):**
@@ -52,11 +52,13 @@ QaChatBot/
 
 ## Features
 
-- PDF document processing and text extraction
-- Vector embeddings using Google Generative AI
-- Question answering using Groq LLM
-- Document similarity search
-- Streamlit web interface
+- PDF document processing (loads every PDF in `data/`)
+- Web crawling of a fixed list of FIFA / World Cup sources (Wikipedia)
+- Local vector embeddings via HuggingFace `all-MiniLM-L6-v2` (no API key, no rate limit)
+- FAISS vector store persisted to `faiss_index/` (built once, reused on later runs)
+- Question answering using a Groq LLM (`llama-3.3-70b-versatile`)
+- Source attribution for each answer
+- Streamlit web interface with source toggles and a build/rebuild button
 
 ## Usage
 

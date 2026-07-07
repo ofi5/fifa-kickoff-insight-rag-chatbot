@@ -53,6 +53,12 @@ Thumbs.db
 .streamlit/
 .streamlit/secrets.toml
 
+# Persisted FAISS vector index
+faiss_index/
+
+# Local HuggingFace model cache
+.hf-cache/
+
 # Logs
 *.log
 
